@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lineare Funktionen</title>
+<script>
+function berechnen(){
+var k =document.getElementById("eingabeK").value;
+k=parseInt(k);
+var d =document.getElementById("eingabeD").value;
+d=parseInt(d);
+var ergebnis ="";
+var eigenschaft ="";
+if (k>0){
+eigenschaft = "Die Funktion ist steigend.";
+}
+
+if (k<0){
+eigenschaft = "Die Funktion ist fallend.";
+}
+
+if (k==0){
+eigenschaft = "Die Funktion ist konstant.";
+}
+
+if (d>0){
+ergebnis = "Die Funktion schneidet die y-Achse im positiven Bereich.";
+}
+
+if (d<0){
+ergebnis = "Die Funktion schneidet die y-Achse im negativen y-Bereich.";
+}
+if (d==0){
+ergebnis = "Die Funktion geht durch den Punkt (0|0).";
+}
+var ausgabetext=(eigenschaft+ "<br>" + ergebnis);
+document.getElementById("ausgabe").innerHTML= ausgabetext;
+}
+</script>
+</head>
+<body>
+y = <input type="text" id="eingabeK"> * x + <input type="text" id="eingabeD">
+<input type="button" value="Eigenschaften" onclick="berechnen()">
+<p id="ausgabe">
+</body>
+</html>

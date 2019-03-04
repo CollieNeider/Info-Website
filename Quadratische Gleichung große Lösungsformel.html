@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Quadratische Gleichung</title>
+<script>
+function berechnen() {
+var a =document.getElementById("eingabeA").value;
+a=parseFloat(a);
+var b =document.getElementById("eingabeB").value;
+b=parseFloat(b);
+var c =document.getElementById("eingabeC").value;
+c=parseFloat(c);
+var diskriminante = (b*b)-(4*a*c);
+	if (diskriminante > 0){
+		var x1 = (-b)+ Math.sqrt(diskriminante)/(2*a);
+		var x2 = (-b)- Math.sqrt(diskriminante)/(2*a);
+		document.getElementById("ausgabe").innerHTML= +x1+ " und " +x2;
+		}
+	if (diskriminante < 0){
+		document.getElementById("ausgabe").innerHTML= "X existiert nicht";
+		}
+	if (diskriminante == 0){
+		var loesung = diskriminante/(2*a);
+		document.getElementById("ausgabe").innerHTML= +loesung;
+	}
+	}
+</script>
+<body>
+<input type="text" id="eingabeA">*x*2+
+<input type="text" id="eingabeB">*x+
+<input type="text" id="eingabeC">=0 <br><br>
+<input type="button" value="Berechnen" onclick="berechnen()"> <br>
+Die Lösung ist:
+<p id="ausgabe">
+</body>
+</html>

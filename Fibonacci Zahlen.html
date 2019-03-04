@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Fibonacci Zahlen</title>
+  </head>
+  <body>
+    <script>
+      document.write("<h1>Fibonacci Zahlen</h1>");
+      var zahlen = [1, 1];
+      for (var k = 1; k <= 10; k++) {
+        var z = zahlen[k] - zahlen[k - 1];
+        zahlen[zahlen.length] = z;
+      }
+      document.write(zahlen + "<br>");
+    </script>
+  </body>
+</html>

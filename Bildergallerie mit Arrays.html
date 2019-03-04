@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>Bildergallerie</title>
+    <meta charset="utf-8">
+    <script>
+      var bilder = ["syksy1.jpg","syksy2.jpg","syksy3.jpg","syksy4.jpg","syksy5.jpg"];
+var index = 0;
+function nextimage(){
+index++;
+if (index>=bilder.length){
+index=0;
+}
+document.getElementById("bild1").src=bilder[index];
+}
+function previousimage(){
+index--;
+if (index<0){
+index=4;
+}
+document.getElementById("bild1").src=bilder[index];
+}
+</script>
+    <style>
+      body{
+  color: #225d5e;
+  background-color: #3ba7ab;
+  font-family: Maiandra GD, sans-serif;
+}
+h1{
+  font-size: 60px;
+  padding-bottom: 20px;
+}
+#button{
+margin-top: -24%;
+color: #225d5e;
+height: 100px;
+width:100px;
+border-radius: 100%;
+font-family: Maiandra GD;
+font-weight: bold;
+font-size: 50px;
+background-color: #a1dcdd;
+border: none;
+}
+#button:hover{
+  border: solid 5px #225d5e;
+}
+</style>
+  </head>
+  <body>
+    <center>
+      <div align="center">
+        <h1>Bildergallerie</h1>
+        <input type="button" id="button" value="<" onclick="nextimage()">&nbsp;
+        <img id="bild1" height="600" src="syksy1.jpg">&nbsp;
+        <input type="button" id="button" value=">" onclick="previousimage()">
+    </center>
+    </div>
+  </body>
+</html>

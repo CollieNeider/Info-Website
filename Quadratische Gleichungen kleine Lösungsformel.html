@@ -1,0 +1,104 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Kontrollstruktur</title>
+		<style>
+			body{
+color: white;
+background-color: black;
+text-align: center;
+font-size: 22px;
+font-family: Calibri Light;
+}
+h1{
+font-size: 52px;
+margin-top: 100px;
+}
+input {
+height: 30px;
+width: 150px;
+text-align: center;
+font-size: 16px;
+border: 1px solid white;
+background-color: black;
+color: white;
+margin: 3px;
+}
+input:hover{
+border-color: #4d88ff;
+}
+#eingabeP {
+font-size: 16px;
+width: 50px;
+height: 30px;
+}
+#eingabeP:hover {
+border-color: white;
+}
+#eingabeQ {
+font-size: 16px;
+width: 50px;
+height: 30px;
+}
+#eingabeQ:hover {
+border-color: white;
+}
+#ausgabe {
+font-size: 26px;
+}
+#border{
+max-height: 300px;
+max-width: 400px;
+padding: 10px;
+margin: auto;
+border-radius: 5%;
+background-image: linear-gradient(to bottom right, aqua, #cc33ff);
+z-index: -1;
+}
+#box{
+height: 50px;
+max-width: 390px;
+padding: 40px;
+padding-bottom: 150px;
+margin: auto;
+border-radius: 4%;
+background-color: black;
+z-index: 1;
+}
+</style>
+		<script>
+			function berechnen() {
+var p =document.getElementById("eingabeP").value;
+p=parseFloat(p);
+var q =document.getElementById("eingabeQ").value;
+q=parseFloat(q);
+var diskriminante = (p/2)*(p/2)-q;
+	if (diskriminante > 0){
+		var x1 = -(p/2)+Math.sqrt(diskriminante);
+		x1 = Math.round(x1*100)/100;
+		var x2 = -(p/2)-Math.sqrt(diskriminante);
+		x2 = Math.round(x2*100)/100;
+		document.getElementById("ausgabe").innerHTML= +x1+ " und " +x2;
+		}
+	if (diskriminante < 0){
+		document.getElementById("ausgabe").innerHTML= "nicht in den reellen Zahlen.";
+		}
+	if (diskriminante == 0){
+		var loesung = -p/2;
+		document.getElementById("ausgabe").innerHTML= +loesung;
+		}
+}
+</script>
+	</head>
+	<body>
+		<h1>PQ-Formel</h1>
+		<div id="border">
+			<div id="box">
+				x² + <input type="text" id="eingabeP"> * x +
+				<input type="text" id="eingabeQ"> = 0 <br><br>
+				<input type="button" value="Berechnen" onclick="berechnen()"> <br>
+				<p id="ausgabe">
+			</div>
+		</div>
+	</body>
+</html>

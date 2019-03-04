@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <title>BMI-Berechner</title>
+    <meta charset="utf-8">
+    <style>
+      body{
+        font-family: Calibri Light, sans-serif;
+        color: white;
+        background-color: black;
+  text-align: center;
+}
+input {
+  height: 30px;
+  width: 90px;
+  text-align: center;
+  border: 1px solid white;
+  background-color: black;
+  color: white;
+  margin: 3px;
+}
+
+#button {
+  width: 90px;
+}
+#button:hover{
+  border-color: orange;
+}
+#ausgabe {
+  font-size: 26px;
+}
+#border{
+  max-height: 300px;
+  max-width: 400px;
+  padding: 10px;
+  margin: auto;
+  border-radius: 5%;
+  background-image: linear-gradient(to bottom right, yellow, red);
+  z-index: -1;
+}
+#box{
+  height: 50px;
+  max-width: 390px;
+  padding: 100px;
+  padding-bottom: 150px;
+  margin: auto;
+  border-radius: 4%;
+  background-color: black;
+  z-index: 1;
+}
+</style>
+  </head>
+  <body>
+    <h1>BMI-Berechner</h1>
+    <div id="border">
+      <div id="box">
+        <input type="text" id="groesse" placeholder="Größe in m">
+        <input type="text" id="gewicht" placeholder="Gewicht in kg">
+        <input type="button" value="Berechnen" id="button" onclick="berechnen()">
+        <p id="ausgabe"></p>
+      </div>
+    </div>
+
+    <script>
+      function berechnen() {
+        var groesse = document.getElementById("groesse").value;
+        groesse = parseFloat(groesse);
+        var gewicht = document.getElementById("gewicht").value;
+        gewicht = parseFloat(gewicht);
+        var bmi = gewicht / (groesse * groesse);
+        bmi = Math.round(bmi * 100) / 100;
+        document.getElementById("ausgabe").innerHTML = "Ihr BMI: " + bmi;
+      }
+    </script>
+  </body>
+</html>
