@@ -1,0 +1,110 @@
+<html>
+	<head>
+		<title>Grad in Rad</title>
+		<meta charset="utf-8">
+		<style>
+			body{
+color: white;
+background-color: black;
+text-align: center;
+font-family: Calibri Light;
+}
+h1{
+font-size: 52px;
+margin-top: 100px;
+}
+input {
+height: 30px;
+width: 150px;
+text-align: center;
+border: 1px solid white;
+background-color: black;
+color: white;
+margin: 3px;
+}
+input:hover{
+border-color: #99ff33;
+}
+#bogenmass {
+font-size: 22px;
+width: 150px;
+height: 50px;
+}
+#bogenmass:hover {
+border-color: white;
+}
+#grad {
+font-size: 22px;
+width: 150px;
+height: 50px;
+}
+#grad:hover {
+border-color: white;
+}
+#ausgabe {
+font-size: 26px;
+}
+#border{
+max-height: 300px;
+max-width: 400px;
+padding: 10px;
+margin: auto;
+border-radius: 5%;
+background-image: linear-gradient(to bottom right, yellow, green);
+z-index: -1;
+}
+#box{
+height: 50px;
+max-width: 390px;
+padding: 40px;
+padding-bottom: 150px;
+margin: auto;
+border-radius: 4%;
+background-color: black;
+z-index: 1;
+}
+</style>
+		<script>
+			function radInGrad(){
+	var rad = document.getElementById("bogenmass").value;
+	rad = parseFloat(rad);
+	var ergebnis1 = rad*180/Math.PI;
+	var ergebnisGrad = Math.round(ergebnis1*100)/100;
+	document.getElementById("grad").value=ergebnisGrad;
+}
+function gradInRad(){
+	var grad = document.getElementById("grad").value;
+	grad= parseFloat(grad);
+	var ergebnis2 = grad*Math.PI/180;
+	var ergebnisRad = Math.round(ergebnis2*100)/100;
+	document.getElementById("bogenmass").value=ergebnisRad;
+}
+</script>
+	</head>
+	<body>
+		<h1>Grad & Bogenmaß Berechner</h1>
+		<div id="border">
+			<div id="box">
+				<table>
+					<tr>
+						<td>
+							<input type="text" placeholder="Bogenmaß" id="bogenmass">
+						</td>
+						<td>
+							<input type="text" placeholder="Grad" id="grad">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="button" class="button" value="Bogenmaß berechnen" onclick="gradInRad()">
+						</td>
+						<td>
+							<input type="button" class="button" value="Grad berechnen" onclick="radInGrad()">
+						</td>
+					</tr>
+
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
