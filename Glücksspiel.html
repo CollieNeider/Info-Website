@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Glücksspiel</title>
+    <style>
+      body {
+        background: linear-gradient(to bottom right, yellow, #ff0066 80%) no-repeat center fixed;
+        background-size: cover;
+        text-align: center;
+        font-family: Calibri Light;
+        color: white;
+      }
+
+      h1 {
+        font-size: 52px;
+        margin-top: 50px;
+      }
+
+      p {
+        font-size: 22px;
+      }
+
+      #bg {
+        background-image: url("geometric1.png");
+        height: 846px;
+        position: relative;
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin: -8px;
+        border: none;
+      }
+
+      #border {
+        position: absolute;
+        background-image: linear-gradient(to bottom right, #ff0066, yellow);
+        padding: 20px;
+        width: 500px;
+        height: 300px;
+        margin-top: 200px;
+        margin-left: 450px;
+        filter: blur(25px);
+      }
+
+      #box {
+        position: absolute;
+        background-color: black;
+        padding: 20px;
+        width: 500px;
+        height: 300px;
+        margin-top: 200px;
+        margin-left: 450px;
+        border-radius: 1%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bg">
+      <div id="border"></div>
+      <div id="box">
+        <h1>Glücksspiel</h1>
+        <p id="ausgabe"></p>
+      </div>
+    </div>
+    <script>
+      var zaehler1 = 0;
+      var zaehler2 = 0;
+      for (i = 1; i <= 1000; i++) {
+        var zahl = Math.random() * 100;
+        zahl = Math.round(zahl);
+        if (zahl <= 42) {
+          zaehler1 = zaehler1 + 1;
+        } else {
+          zaehler2 = zaehler2 + 1;
+        }
+      }
+      var prozent1 = zaehler1 / 10;
+      var prozent2 = zaehler2 / 10;
+      document.getElementById("ausgabe").innerHTML = "Du hast " + zaehler1 + " (" + prozent1 + "%) mal gewonnen und<br> " +
+        zaehler2 + " (" + prozent2 + "%) mal verloren!";
+    </script>
+  </body>
+</html>

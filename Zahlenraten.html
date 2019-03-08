@@ -1,0 +1,107 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Zahlenraten</title>
+		<style>
+			body {
+	background: linear-gradient(to bottom right, aqua, purple 80%) no-repeat center fixed;
+	background-size: cover;
+	text-align: center;
+	font-family: Calibri Light;
+	color: white;
+}
+h1{
+font-size: 52px;
+margin-top: 50px;
+}
+input {
+height: 50px;
+width: 150px;
+font-size: 22px;
+text-align: center;
+border: 1px solid white;
+background-color: black;
+color: white;
+margin: 3px;
+}
+input:hover{
+border-color: #9966ff;
+}
+#eingabe:hover{
+	border-color: white;
+}
+p{
+	font-size: 22px;
+}
+#bg{
+	background-image: url("geometric1.png");
+	height: 846px;
+	position: relative;
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin: -8px;
+	border: none;
+}
+#border {
+	position: absolute;
+	background-image: linear-gradient(to bottom right, purple,aqua);
+	padding: 20px;
+	width: 500px;
+	height: 300px;
+	margin-top: 200px;
+  margin-left: 450px;
+	filter: blur(25px);
+}
+#box {
+	position: absolute;
+	background-color: black;
+	padding: 20px;
+	width: 500px;
+	height: 300px;
+	margin-top: 200px;
+  margin-left: 450px;
+border-radius: 1%;
+}
+		</style>
+		<script>
+
+			var zahl = Math.random()*100+0.5;
+zahl = Math.round(zahl);
+var versuche=0;
+
+function raten(){
+
+var eingabe = document.getElementById("eingabe").value;
+eingabe = parseInt(eingabe);
+var ausgabe="";
+
+
+	if (zahl<eingabe) {
+	versuche= versuche+1;
+	ausgabe= "Die Zahl ist kleiner"
+	}
+
+	if (zahl>eingabe) {
+	versuche= versuche+1;
+	ausgabe= "Die Zahl ist größer";
+	}
+
+	if (zahl==eingabe) {
+	ausgabe= "Du hast die Zahl erraten!<br> Du hast " +versuche+ " Versuche gebraucht.";
+	}
+document.getElementById("ausgabe").innerHTML= ausgabe;
+}
+
+</script>
+	<body>
+		<div id="bg">
+			<div id="border"></div>
+			<div id="box">
+				<h1>Zahlen raten</h1>
+				<input type="text" id="eingabe">
+				<input type="button" value="OK" onclick="raten()"><br><br>
+				<p id="ausgabe"></p>
+			</div>
+		</div>
+	</body>
+</html>
