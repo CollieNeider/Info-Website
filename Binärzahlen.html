@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Binärzahlen</title>
+    <style>
+      body{
+  color: white;
+  background-color: black;
+  text-align: center;
+  font-family: Calibri Light;
+}
+h1{
+  font-size: 52px;
+  margin-top: 100px;
+}
+input {
+  height: 50px;
+  width: 200px;
+  text-align: center;
+  font-size: 22px;
+  border: 1px solid white;
+  background-color: black;
+  color: white;
+  margin: 3px;
+}
+#button:hover{
+  border-color: #00b38f;
+}
+#border{
+  max-height: 500px;
+  max-width: 500px;
+  padding: 10px;
+  margin: auto;
+  border-radius: 5%;
+  background-image: linear-gradient(to bottom right, #004d4d, #1affd1 90%);
+  z-index: -1;
+}
+#box{
+  height: 120px;
+  max-width: 490px;
+  padding: 30px;
+  padding-bottom: 150px;
+  margin: auto;
+  border-radius: 4%;
+  background-color: black;
+  z-index: 1;
+}
+</style>
+  </head>
+  <body>
+    <h1>Dezimal- in Binärzahlen Umrechner</h1>
+    <div id="border">
+      <div id="box">
+        <input type="text" id="zahl" placeholder="Dezimal">
+        <input type="text" id="binaerzahl" placeholder="Binär"><br>
+        <input type="button" id="button" value="Dezimal berechnen" onclick="berechnen2()">
+        <input type="button" id="button" value="Binär berechen" onclick="berechnen1()">
+        <br> <br>
+        <input type="text" id="hexa" placeholder="Dezimal">
+        <input type="text" id="dezimal" placeholder="Hexadezimal">
+        <input type="button" id="button" value="Dezimal berechnen" onclick="berechnen4()">
+        <input type="button" id="button" value="Hexadezimal berechnen" onclick="berechnen3()">
+      </div>
+    </div>
+    <script>
+      function berechnen1() {
+        var zahl = document.getElementById("zahl").value;
+        zahl = parseInt(zahl);
+        var array = [];
+        while (zahl != 0) {
+          var help = zahl % 2;
+          zahl = Math.floor(zahl / 2);
+          array.splice(0, 0, help);
+        }
+        document.getElementById("binaerzahl").value = array.join("");
+      }
+
+      function berechnen2() {
+        var zahl = document.getElementById("binaerzahl").value;
+        var erg = 0;
+        for (i = zahl.length - 1; i >= 0; i--) {
+          var help = zahl.charAt(i);
+          help = parseInt(help);
+          help = help * Math.pow(2, (zahl.length - 1) - i);
+          erg = erg + help;
+        }
+        document.getElementById("zahl").value = erg;
+      }
+
+      function berechnen3() {
+        var zahl = document.getElementById("hexa").value;
+        zahl = parseInt(zahl);
+        var array = [];
+        while (zahl != 0) {
+          var help = zahl % 16;
+          zahl = Math.floor(zahl / 16);
+          if (help == 10) {
+            help = "A";
+          } else if (help == 11) {
+            help = "B";
+          } else if (help == 12) {
+            help = "C";
+          } else if (help == 13) {
+            help = "D";
+          } else if (help == 14) {
+            help = "E";
+          } else if (help == 15) {
+            help = "F";
+          } else if (help == 16) {
+            help = 10;
+          }
+          array.splice(0, 0, help);
+        }
+        document.getElementById("dezimal").value = array.join("");
+      }
+
+      function berechnen4() {
+        var zahl = document.getElementById("dezimal").value;
+        var erg = 0;
+        for (i = zahl.length - 1; i >= 0; i--) {
+          var help = zahl.charAt(i);
+          if (help == "A") {
+            help = 10;
+          } else if (help == "B") {
+            help = 11;
+          } else if (help == "C") {
+            help = 12;
+          } else if (help == "D") {
+            help = 13;
+          } else if (help == "E") {
+            help = 14;
+          } else if (help == "F") {
+            help = 15;
+          } else if (help == 10) {
+            help = 16;
+          }
+          help = parseInt(help);
+          help = help * Math.pow(16, (zahl.length - 1) - i);
+          erg = erg + help;
+        }
+        document.getElementById("hexa").value = erg;
+      }
+    </script>
+  </body>
+</html>

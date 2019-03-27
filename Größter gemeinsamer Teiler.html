@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Größter gemeinsamer Teiler</title>
+    <style>
+      body {
+        color: white;
+        background-color: black;
+        text-align: center;
+        font-family: Calibri Light;
+      }
+
+      h1 {
+        font-size: 52px;
+        margin-top: 100px;
+      }
+
+      input {
+        height: 50px;
+        width: 200px;
+        text-align: center;
+        font-size: 22px;
+        border: 1px solid white;
+        background-color: black;
+        color: white;
+        margin: 3px;
+      }
+
+      #button:hover {
+        border-color: #9999ff;
+      }
+
+p {
+  font-size: 26px;
+}
+
+      #border {
+        max-height: 500px;
+        max-width: 500px;
+        padding: 10px;
+        margin: auto;
+        border-radius: 5%;
+        background-image: linear-gradient(to bottom right, #c61aff, #33cccc 70%);
+        z-index: -1;
+      }
+
+      #box {
+        height: 70px;
+        max-width: 490px;
+        padding: 30px;
+        padding-bottom: 150px;
+        margin: auto;
+        border-radius: 4%;
+        background-color: black;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Größter gemeinsamer Teiler</h1>
+    <div id="border">
+      <div id="box">
+        <input type="text" id="zahl1" placeholder="1. Zahl">
+        <input type="text" id="zahl2" placeholder="2. Zahl"><br>
+        <input type="button" id="button" value="GGT berechnen" onclick="berechnen()">
+        <p id="ausgabe"></p>
+      </div>
+    </div>
+    <script>
+      function berechnen() {
+        var a = document.getElementById("zahl1").value;
+        a = parseInt(a);
+        var b = document.getElementById("zahl2").value;
+        b = parseInt(b);
+        var teiler = ggt(a, b);
+        document.getElementById("ausgabe").innerHTML = teiler;
+      }
+
+      function ggt(a, b) {
+        var rest;
+        do {
+          rest = a % b;
+          a = b;
+          b = rest;
+        }
+        while (rest > 0) {
+          return a;
+        }
+      }
+    </script>
+  </body>
+</html>
