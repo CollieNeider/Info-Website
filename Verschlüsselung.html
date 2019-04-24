@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Verschlüsselung</title>
+    <style>
+      body{
+  color: white;
+  background-color: black;
+  text-align: center;
+  font-family: Calibri Light;
+}
+h1{
+  font-size: 52px;
+  margin-top: 100px;
+}
+input {
+  height: 50px;
+  width: 200px;
+  text-align: center;
+  font-size: 22px;
+  border: 1px solid white;
+  background-color: black;
+  color: white;
+  margin: 3px;
+}
+#entschluesselt{
+  background-color: black;
+  color: white;
+  font-size: 18px;
+}
+#verschluesselt{
+  background-color: black;
+  color: white;
+  font-size: 18px;
+}
+#button:hover{
+  border-color: #d966ff;
+}
+#border{
+  max-width: 610px;
+  padding: 10px;
+  margin: auto;
+  border-radius: 5%;
+  background-image: linear-gradient(to bottom right, #29a3a3, #cc0052 90%);
+  z-index: -1;
+}
+#box{
+  height: 300px;
+  max-width: 600px;
+  padding: 30px;
+  padding-bottom: 150px;
+  margin: auto;
+  border-radius: 4%;
+  background-color: black;
+  z-index: 1;
+}
+</style>
+  </head>
+
+  <body>
+    <h1>Text Verschlüsselung</h1>
+    <div id="border">
+      <div id="box">
+        <input type="number" id="key" placeholder="Schlüssel"><br><br><br>
+        <textarea rows="4" cols="40" spellcheck="false" id="entschluesselt" placeholder="Entschlüsselt"></textarea><br>
+        <input type="button" id="button" value="Verschlüsseln" onclick="versch()"><br><br>
+        <textarea rows="4" cols="40" spellcheck="false" id="verschluesselt" placeholder="Verschlüsselt"></textarea><br>
+        <input type="button" id="button" value="Entschlüsseln" onclick="entsch()">
+      </div>
+    </div>
+    <script>
+      function versch() {
+        var str = document.getElementById("entschluesselt").value;
+        var key = document.getElementById("key").value;
+        key = parseInt(key);
+        var arr = [];
+        for (i = str.length - 1; i >= 0; i--) {
+          var code = str.charCodeAt(i) + key;
+          if (code - key == 122) {
+            fertig = "a";
+          } else {
+            var fertig = String.fromCharCode(code);
+          }
+          if (fertig == "!") {
+            fertig = " ";
+          }
+          if (fertig == "[") {
+            fertig = "A";
+          }
+          arr.splice(0, 0, fertig);
+        }
+        document.getElementById("verschluesselt").value = arr.join("");
+      }
+
+      function entsch() {
+        var str = document.getElementById("verschluesselt").value;
+        var key = document.getElementById("key").value;
+        key = parseInt(key);
+        var arr = [];
+        for (i = str.length - 1; i >= 0; i--) {
+          var code = str.charCodeAt(i) - key;
+          if (code + key == 90) {
+            var fertig = "A";
+          } else if (code == " ") {
+            var fertig = " ";
+          } else {
+            var fertig = String.fromCharCode(code);
+          }
+          arr.splice(0, 0, fertig);
+        }
+        document.getElementById("entschluesselt").value = arr.join("");
+      }
+    </script>
+  </body>
+</html>
