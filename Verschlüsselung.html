@@ -76,18 +76,19 @@ input {
         key = parseInt(key);
         var arr = [];
         for (i = str.length - 1; i >= 0; i--) {
-          var code = str.charCodeAt(i) + key;
-          if (code - key == 122) {
-            fertig = "a";
-          } else {
-            var fertig = String.fromCharCode(code);
+          var code = str.charCodeAt(i);
+          if (code >= 97 && code <= 122) {
+            code += key;
+            if (code > 122) {
+              code -= 26;
+            }
+          } else if (code >= 65 && code <= 90) {
+            code += key;
+            if (code > 90) {
+              code -= 26;
+            }
           }
-          if (fertig == "!") {
-            fertig = " ";
-          }
-          if (fertig == "[") {
-            fertig = "A";
-          }
+          var fertig = String.fromCharCode(code);
           arr.splice(0, 0, fertig);
         }
         document.getElementById("verschluesselt").value = arr.join("");
@@ -99,14 +100,19 @@ input {
         key = parseInt(key);
         var arr = [];
         for (i = str.length - 1; i >= 0; i--) {
-          var code = str.charCodeAt(i) - key;
-          if (code + key == 90) {
-            var fertig = "A";
-          } else if (code == " ") {
-            var fertig = " ";
-          } else {
-            var fertig = String.fromCharCode(code);
+          var code = str.charCodeAt(i);
+          if (code >= 97 && code <= 122) {
+            code -= key;
+            if (code + key == 97) {
+              code += 26;
+            }
+          } else if (code >= 65 && code <= 90) {
+            code -= key;
+            if (code + key == 65) {
+              code += 26;
+            }
           }
+          var fertig = String.fromCharCode(code);
           arr.splice(0, 0, fertig);
         }
         document.getElementById("entschluesselt").value = arr.join("");
