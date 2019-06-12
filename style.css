@@ -94,10 +94,11 @@ a:hover {
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
-  display: block;
+  display: inline-block;
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-  background-color: rgba(0, 0, 0, 0.4);
+  transform: rotate(-90deg);
+  transition-duration: 300ms;
 }
