@@ -27,18 +27,28 @@ body {
   margin: auto;
   width: 600px;
   height: 105px;
+  animation-name: appear;
+  animation-duration: 1s;
 }
 #line {
   height: 50px;
   width: 0px;
   border: 1px solid white;
   margin: auto;
+  animation-name: appear;
+  animation-duration: 1s;
 }
 #menu {
   border: 1px solid white;
   width: 350px;
   padding: 20px;
   margin: auto;
+  animation-name: appear;
+  animation-duration: 3s;
+}
+@keyframes appear{
+  0% {opacity: 0.1};
+  100% {opacity: 1};
 }
 h1 {
   font-size: 60px;
@@ -50,7 +60,7 @@ a {
   transition-duration: 200ms;
 }
 a:hover {
-  color: #5900b3;
+  color: #5629CC;
 }
 /* Dropdowns */
 .dropbtn {
@@ -89,7 +99,7 @@ a:hover {
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-  background-color: #5900b3;
+  background-color: #5629CC;
 }
 
 /* Show the dropdown menu on hover */
