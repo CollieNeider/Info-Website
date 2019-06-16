@@ -2,25 +2,9 @@
   <head>
     <title>Bildergallerie</title>
     <meta charset="utf-8">
-    <script>
-      var bilder = ["syksy1.jpg","flower.jpg","syksy3.jpg","syksy4.jpg","syksy5.jpg","ice.jpg"];
-var index = 0;
-function nextimage(){
-index++;
-if (index>=bilder.length){
-index=0;
-}
-document.getElementById("bild1").src=bilder[index];
-}
-function previousimage(){
-index--;
-if (index<0){
-index=5;
-}
-document.getElementById("bild1").src=bilder[index];
-}
-</script>
+
     <style>
+
       body {
 background: linear-gradient(to bottom right, #ffdb4d, #b38600 80%) no-repeat center fixed;
 height: window.innerHeight;
@@ -86,6 +70,23 @@ animation: appear 1s;
   margin: 30px;
   animation: appear 1s;
 }
+#captionbox{
+  z-index:2;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 30px;
+  width: 900px;
+  margin-top: -99px;
+  margin-left: 50%;
+transform: translate(-50%);
+  border: none;
+}
+#caption{
+  z-index: 3;
+  margin-top: -1px;
+  font-family: Calibri Light;
+  font-size: 24px;
+}
 @keyframes appear {
   from{opacity:0;}
   to{opacity:1;}
@@ -99,10 +100,36 @@ animation: appear 1s;
         <div id="box">
           <input type="button" id="button" value="<" onclick="nextimage()">&nbsp;
           <img id="bild1" height="600" src="syksy1.jpg">&nbsp;
+          <div id="captionbox">
+            <p id="caption"></p>
+          </div>
           <input type="button" id="button" value=">" onclick="previousimage()">
         </div>
-
     </center>
     </div>
+    <script>
+      var bilder = ["syksy1.jpg", "flower.jpg", "syksy3.jpg", "syksy4.jpg", "syksy5.jpg", "ice.jpg"];
+      var captions = ["Blatt 2018", "Gänseblümchen 2019", "Volksgarten Salzburg 2018", "Allee 2018", "See 2018", "Eiskristalle 2019"];
+      document.getElementById("caption").innerHTML += "Blatt 2018";
+      var index = 0;
+
+      function nextimage() {
+        index++;
+        if (index >= bilder.length || index >= captions.length) {
+          index = 0;
+        }
+        document.getElementById("bild1").src = bilder[index];
+        document.getElementById("caption").innerHTML = captions[index];
+      }
+
+      function previousimage() {
+        index--;
+        if (index < 0) {
+          index = 5;
+        }
+        document.getElementById("bild1").src = bilder[index];
+        document.getElementById("caption").innerHTML = captions[index];
+      }
+    </script>
   </body>
 </html>
