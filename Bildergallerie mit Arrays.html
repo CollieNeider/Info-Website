@@ -15,6 +15,8 @@ text-align: center;
 color: white;
 }
 input {
+z-index: 3;
+position: absolute;
 height: 100px;
 width: 100px;
 font-size: 30px;
@@ -24,9 +26,8 @@ border: 1px solid white;
 border-radius: 50%;
 background-color: black;
 color: white;
-display: inline-block;
-margin-top: -330px;
-
+top: 45%;
+transform: translate(-50%);
 }
 input:hover{
 border-color: #ffe066;
@@ -37,52 +38,57 @@ font-size: 26px;
 }
 #bg{
 background-image: url("geometric1.png");
-height: 846px;
+height: 100%;
 position: relative;
 background-size: cover;
 background-repeat: no-repeat;
-margin: -8px;
+margin: 0px;
 border: none;
 }
 #border {
 position: absolute;
+z-index: 1;
 background-image: linear-gradient(to bottom right, #b38600,#ffe680);
 padding: 5px;
-height: 520px;
-width: 950px;
-margin-top: 120px;
-margin-left: 230px;
+height: 60%;
+width: 60%;
+margin-left: 50%;
+margin-top: 25%;
+transform: translate(-50%, -50%);
 filter: blur(15px);
-animation: appear 1.5s;
+animation: appear 1.3s;
 }
 #box {
 position: absolute;
+z-index: 2;
 background-color: black;
-height: 520px;
-width: 950px;
-margin-top: 125px;
-margin-left: 235px;
+height: 60%;
+width: 60%;
+margin-left: 50%;
+margin-top: 25%;
+transform: translate(-50%, -50%);
 border-radius: 1%;
 animation: appear 1s;
 }
 #bild1{
-  height: 450px;
+  z-index: 3;
+  height: 88%;
   margin: 30px;
   animation: appear 1s;
 }
 #captionbox{
-  z-index:2;
+  z-index:4;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.5);
   height: 30px;
-  width: 900px;
-  margin-top: -99px;
+  width: 90%;
+  margin-top: -8%;
   margin-left: 50%;
 transform: translate(-50%);
   border: none;
 }
 #caption{
-  z-index: 3;
+  z-index: 5;
   margin-top: -1px;
   font-family: Calibri Light;
   font-size: 24px;
@@ -98,12 +104,12 @@ transform: translate(-50%);
       <div id="bg">
         <div id="border"></div>
         <div id="box">
-          <input type="button" id="button" value="<" onclick="nextimage()">&nbsp;
+          <input type="button" id="button1" value="<" onclick="nextimage()">&nbsp;
           <img id="bild1" height="600" src="syksy1.jpg">&nbsp;
           <div id="captionbox">
             <p id="caption"></p>
           </div>
-          <input type="button" id="button" value=">" onclick="previousimage()">
+          <input type="button" id="button2" value=">" onclick="previousimage()">
         </div>
     </center>
     </div>
